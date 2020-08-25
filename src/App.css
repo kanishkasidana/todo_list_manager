@@ -1,7 +1,23 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
+  margin-top:20px;
 }
 
 .madate{
   color:red
+}
+
+.login-form{
+  border: 1px solid #c7caf3;
+  padding: 40px;
+  background-color: #f5faff;
+  display: block;
+}
+
+.loader {
+   
+    position: absolute;
+    top: 290px;
+    left: 365px;
+    z-index: 9;
 }

@@ -11,9 +11,16 @@ const TaskSchema = new mongoose.Schema({
     type: String
   },
   priority: {
-    type: Number
+    type: String
   },
   isDeleted: {
+    type: Boolean,
+    default: false
+  },
+  color: {
+    type: String
+  },
+  isArchived: {
     type: Boolean,
     default: false
   },
