@@ -1,10 +1,16 @@
 const { Task } = require("../models/task-model");
+const path = require('path');
 
 const saveTask = (req, res) => {
   console.log("req.body", req.body);
-  var task = req.body;
-  if (task._id) {
+  console.log("req.files", req.files);
+  // const url = req.protocol + '://' + req.get('host')
+  var task = JSON.parse(req.body.data);
+  // let pathUrl = url+ '/uploads/' + req.file.filename;
+  task.attachment = req.file.filename;
 
+  if (task._id) {
+    console.log("task edit", task);
     Task.updateOne({ _id: task._id }, task)
       .then((result) => {
 
@@ -17,7 +23,7 @@ const saveTask = (req, res) => {
         res.json({ "success": false, "err": "Something went wrong. Please try again later" });
       })
   } else {
-    console.log("task", task);
+    console.log("task add", task);
     Task.create(task)
       .then((result) => {
 
@@ -124,10 +130,28 @@ const archiveTask = (req, res) => {
     })
 }
 
+const downloadFile = ((req, res) => { // this routes all types of file
+  console.log("req.body", req.body);
+  var data = req.body;
+
+  let uploadFolder = '../server/uploads/';
+
+  var abpath = path.join(uploadFolder + data.filename);
+  console.log("abpath", abpath);
+
+  res.download(abpath, (err) => {
+    if (err) {
+      console.log(err);
+    }
+  })
+
+});
+
 module.exports = {
   saveTask: saveTask,
   getAllTasks: getAllTasks,
   deleteTask: deleteTask,
   getTaskById: getTaskById,
-  archiveTask: archiveTask
+  archiveTask: archiveTask,
+  downloadFile: downloadFile
 }

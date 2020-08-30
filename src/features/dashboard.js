@@ -22,10 +22,10 @@ function Dashboard() {
 
         <label htmlFor="tasks" style={{ fontSize: '20px', fontWeight: '500' }}>Tasks</label>
         <button type="button" className="btn btn-default" onClick={showTaskForm}>
-          <i className="fas fa-plus" style={{ color: '#36c724', cursor: 'pointer' }}></i>
+          <i className="fas fa-plus" title="add" style={{ color: '#36c724', cursor: 'pointer' }}></i>
         </button>
 
-        <TaskList type="all"/>
+        <TaskList type="all" />
       </div>
 
     </>

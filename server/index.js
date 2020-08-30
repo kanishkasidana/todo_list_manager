@@ -23,16 +23,16 @@ mongoose.connect(config.db, {
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, '../build')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 var port = config.serverPort;
 
-app.use(bodyParser.json());
+
 
 app.use(bodyParser.urlencoded({
   extended: true
 }));
-
+app.use(bodyParser.json());
 app.use(cors());
 
 app.use(passport.initialize());

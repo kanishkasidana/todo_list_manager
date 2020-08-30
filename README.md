@@ -1,5 +1,17 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+## Steps to run the project
+git clone https://github.com/kanishkasidana/todo_list_manager.git 
+OR
+Download the zip file
+
+cd todo_list_manager
+
+npm install
+
+npm run dev
+
 ## Available Scripts
 
 In the project directory, you can run:
